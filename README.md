@@ -41,7 +41,7 @@ This is a custom integration for Home Assistant that allows you to control your 
 4. Restart Home Assistant.
 
 ## Configuration
-<a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=dreame-mower" target="_blank"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Open your Home Assistant instance and start setting up a new integration." /></a>
+<a href="https://my.home-assistant.io/redirect/config_flow_start/?domain=dreame_mower" target="_blank"><img src="https://my.home-assistant.io/badges/config_flow_start.svg" alt="Open your Home Assistant instance and start setting up a new integration." /></a>
 
 -- or --
 
