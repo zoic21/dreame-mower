@@ -19,7 +19,7 @@ from Crypto.Cipher import ARC4
 from miio.miioprotocol import MiIOProtocol
 
 from .exceptions import DeviceException
-from .const import DREAME_STRINGS
+from .const import DREAME_STRINGS, MOVA_STRINGS
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -73,8 +73,9 @@ class DreameMowerDeviceProtocol(MiIOProtocol):
 
 
 class DreameMowerDreameHomeCloudProtocol:
-    def __init__(self, username: str, password: str, country: str = "cn", did: str = None) -> None:
+    def __init__(self, username: str, password: str, country: str = "cn", did: str = None, account_type: str = "dreame") -> None:
         self.two_factor_url = None
+        self._account_type = account_type
         self._username = username
         self._password = password
         self._country = country
@@ -270,8 +271,12 @@ class DreameMowerDreameHomeCloudProtocol:
         self._logged_in = False
 
         if self._strings is None:
-            self._strings = json.loads(zlib.decompress(
-                base64.b64decode(DREAME_STRINGS), zlib.MAX_WBITS | 32))
+            if self._account_type == "dreame": 
+                self._strings = json.loads(zlib.decompress(
+                    base64.b64decode(DREAME_STRINGS), zlib.MAX_WBITS | 32))
+            if self._account_type == "mova": 
+                self._strings = json.loads(zlib.decompress(
+                    base64.b64decode(MOVA_STRINGS), zlib.MAX_WBITS | 32))
 
         try:
             if self._secondary_key:
@@ -318,7 +323,7 @@ class DreameMowerDreameHomeCloudProtocol:
                         return self.login()
                 except:
                     pass
-                _LOGGER.error("Login failed: %s", response.text)
+                _LOGGER.error("Login failed: %s => %s -- %s -- %s", response.text,self.get_api_url() + self._strings[17],headers,data)
         except requests.exceptions.Timeout:
             response = None
             _LOGGER.warning("Login Failed: Read timed out. (read timeout=10)")
@@ -1186,7 +1191,7 @@ class DreameMowerProtocol:
                     username, password, country)
             else:
                 self.cloud = DreameMowerDreameHomeCloudProtocol(
-                    username, password, country, device_id)
+                    username, password, country, device_id,account_type)
         else:
             self.prefer_cloud = False
             self.cloud = None
