@@ -193,7 +193,7 @@ class DreameMowerErrorCode(IntEnum):
     TURN_SUFFOCATE = 17
     FORWARD_SUFFOCATE = 18
     CHARGER_GET = 19
-    BATTERY_LOW = 20
+    BATTERY_LOW = 54
     CHARGE_FAULT = 21
     BATTERY_PERCENTAGE = 22
     HEART = 23
@@ -220,10 +220,10 @@ class DreameMowerErrorCode(IntEnum):
     P3V3 = 45
     CAMERA_IDLE = 46
     BLOCKED = 47
-    LDS_ERROR = 48
+    LDS_ERROR = 9948
     LDS_BUMPER = 49
     FILTER_BLOCKED = 51
-    EDGE = 54
+    EDGE = 9954
     LASER = 56
     EDGE_2 = 57
     ULTRASONIC = 58
