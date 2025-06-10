@@ -466,6 +466,8 @@ class DreameMowerDreameHomeCloudProtocol:
             return None
 
         if api_response is None or "data" not in api_response or "result" not in api_response["data"]:
+            if "code" in api_response and api_response["code"] == 0:
+                return None
             _LOGGER.warning(
                 "DreameMowerDreameHomeCloudProtocol.send failed: %s", api_response)
             return None
