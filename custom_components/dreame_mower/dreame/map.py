@@ -197,6 +197,7 @@ class DreameMapMowerMapManager:
         self._capability: DreameMowerDeviceCapability = None
 
     def _request_map_from_cloud(self) -> bool:
+        return False
         if self._protocol.cloud.dreame_cloud:
             return True
 
@@ -271,6 +272,7 @@ class DreameMapMowerMapManager:
         return len(map_data_result) or object_name is not None
 
     def _request_map(self, parameters: dict[str, Any] = None) -> dict[str, Any] | None:
+        return None
         if parameters is None:
             parameters = {
                 MAP_REQUEST_PARAMETER_FRAME_TYPE: MapFrameType.I.name,
@@ -284,14 +286,15 @@ class DreameMapMowerMapManager:
         ]
 
         try:
-            _LOGGER.info("Request map from device %s", payload)
+            _LOGGER.debug("DreameMapMowerMapManager._request_map %s", payload)
             mapping = DreameMowerActionMapping[DreameMowerAction.REQUEST_MAP]
             return self._protocol.action(mapping["siid"], mapping["aiid"], payload, 0)
         except Exception as ex:
-            _LOGGER.warning("Send request map failed: %s", ex)
+            _LOGGER.warning("DreameMapMowerMapManager._request_map failed: %s", ex)
         return None
 
     def _request_i_map(self, start_time: int = None) -> bool:
+        return False
         if not self._request_i_map_available and not self._protocol.dreame_cloud:
             return self.request_new_map()
 
@@ -307,7 +310,7 @@ class DreameMapMowerMapManager:
         result = self._request_map(parameters)
         if result and result[MAP_PARAMETER_CODE] == 0:
             out = result[MAP_PARAMETER_OUT]
-            _LOGGER.info("Response from device %s", out)
+            _LOGGER.debug("Response from device %s", out)
             has_map = False
             object_name = None
             raw_map_data = None
@@ -439,7 +442,7 @@ class DreameMapMowerMapManager:
             mapping = DreameMowerActionMapping[DreameMowerAction.WIFI_MAP]
             return self._protocol.action(mapping["siid"], mapping["aiid"], None, 0)
         except Exception as ex:
-            _LOGGER.warning("Send request map failed: %s", ex)
+            _LOGGER.warning("Send _request_w_map failed: %s", ex)
         return None
 
     def _request_current_map(self, map_request_time: int = None) -> bool:
