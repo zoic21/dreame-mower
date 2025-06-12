@@ -838,6 +838,18 @@ ERROR_CODE_TO_IMAGE_INDEX: Final = {
 # Dreame Mower error descriptions
 ERROR_CODE_TO_ERROR_DESCRIPTION: Final = {
     DreameMowerErrorCode.NO_ERROR: ["No error", ""],
+    DreameMowerErrorCode.EMERGENCY_STOP: [
+        "Emergency stop press",
+        "Please check mower.",
+    ],
+    DreameMowerErrorCode.LID_IS_OPEN: [
+        "Lid is open",
+        "Please check mower.",
+    ],
+    DreameMowerErrorCode.OUT_OF_MAP: [
+        "Mower out of map",
+        "Please check mower.",
+    ],
     DreameMowerErrorCode.DROP: [
         "Wheels are suspended",
         "Please reposition the robot and restart.",
@@ -899,6 +911,18 @@ ERROR_CODE_TO_ERROR_DESCRIPTION: Final = {
         "Please check whether the power cord is plugged in correctly.",
     ],
     DreameMowerErrorCode.BATTERY_LOW: [
+        "Low battery",
+        "Battery level is too low. Please charge.",
+    ],
+    DreameMowerErrorCode.BATTERY_LOW_1: [
+        "Low battery",
+        "Battery level is too low. Please charge.",
+    ],
+    DreameMowerErrorCode.BATTERY_LOW_2: [
+        "Low battery",
+        "Battery level is too low. Please charge.",
+    ],
+    DreameMowerErrorCode.BATTERY_LOW_3: [
         "Low battery",
         "Battery level is too low. Please charge.",
     ],

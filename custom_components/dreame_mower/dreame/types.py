@@ -176,6 +176,15 @@ class DreameMowerChargingStatus(IntEnum):
 class DreameMowerErrorCode(IntEnum):
     """Dreame Mower error code"""
 
+    LOW_BATTERY_TURN_OFF = 24
+    BATTERY_LOW = 20
+    BATTERY_LOW_1 = 34
+    BATTERY_LOW_2 = 35
+    BATTERY_LOW_3 = 54
+    EMERGENCY_STOP = 19
+    LID_IS_OPEN = 59
+    OUT_OF_MAP = 18
+
     UNKNOWN = -1
     NO_ERROR = 0
     DROP = 1
@@ -193,7 +202,6 @@ class DreameMowerErrorCode(IntEnum):
     TURN_SUFFOCATE = 17
     FORWARD_SUFFOCATE = 18
     CHARGER_GET = 19
-    BATTERY_LOW = 20
     CHARGE_FAULT = 21
     BATTERY_PERCENTAGE = 22
     HEART = 23

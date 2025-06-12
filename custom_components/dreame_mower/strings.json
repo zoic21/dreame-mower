@@ -235,6 +235,9 @@
       "error": {
         "state": {
           "unknown": "Unknown error code",
+          "emergency_stop": "Emergency stop press",
+          "lid_is_open": "Lid is open",
+          "out_of_map": "Out of map",
           "no_error": "No error",
           "drop": "Wheels are suspended",
           "cliff": "Cliff sensor error",
@@ -252,6 +255,9 @@
           "forward_suffocate": "The robot is stuck, or cannot go forward",
           "charger_get": "Cannot find base",
           "battery_low": "Low battery",
+          "battery_low_1": "Low battery",
+          "battery_low_2": "Low battery",
+          "battery_low_3": "Low battery",
           "charge_fault": "Charging error",
           "battery_percentage": "Battery level error",
           "heart": "Internal error",
